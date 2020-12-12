@@ -1,11 +1,13 @@
 {
   "name": "web-parts",
   "version": "0.1.38",
-  "description": "Web parts implemented in React",  
+  "description": "Web parts implemented in React",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel --out-dir lib/index.js src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +16,17 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
-    "babel-plugin-macros": "^3.0.0"
+    "@storybook/addon-actions": "^6.1.10",
+    "@storybook/addon-essentials": "^6.1.10",
+    "@storybook/addon-links": "^6.1.10",
+    "@storybook/react": "^6.1.10",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.0.0",
+    "storybook": "^6.1.10"
   },
   "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2",
     "twin.macro": "^2.0.7"
