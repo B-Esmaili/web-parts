@@ -1,0 +1,24 @@
+{
+  "name": "web-parts",
+  "version": "0.1.38",
+  "description": "Web parts implemented in React",  
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel --out-dir lib/index.js src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "babel-plugin-macros": "^3.0.0"
+  },
+  "dependencies": {
+    "styled-components": "^5.2.1",
+    "tailwindcss": "^2.0.2",
+    "twin.macro": "^2.0.7"
+  }
+}
