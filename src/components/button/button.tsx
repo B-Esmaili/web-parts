@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface ButtonProps {
+export interface ButtonProps {
     content : string,
     color: string
 }
