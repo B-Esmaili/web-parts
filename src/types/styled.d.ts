@@ -10,7 +10,10 @@ declare module 'styled-components' {
     colors: {
       main: string
       secondary: string,
-      buttonColor : string
+      button ?:{
+        color? : string
+        bgColor? : string
+      }
     }
   }
 }

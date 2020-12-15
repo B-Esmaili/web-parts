@@ -6,7 +6,9 @@ const myTheme: DefaultTheme = {
   colors: {
     main: 'cyan',
     secondary: 'magenta',
-    buttonColor : "#F00"
+    button : {
+      color : "#F00"
+    }
   },
 }
 
