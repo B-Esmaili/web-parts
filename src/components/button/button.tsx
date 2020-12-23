@@ -1,18 +1,34 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { ReactNode } from 'react'
+import styled, { css } from 'styled-components'
 import tw from 'twin.macro'
 import Spinner from './spinner'
+import { generateBgColor } from './color-gen'
+
+export enum ButtonColor {
+    black = "black",
+    white = "white",
+    gray = "gray",
+    red = "red",
+    yellow = "yellow",
+    green = "green",
+    blue = "blue",
+    indigo = "indigo",
+    purple = "purple",
+    pink = "pink",
+}
 
 export interface ButtonProps {
-    content: string,
-    color: string,
-    loading: boolean,
-    background : string
+    content?: ReactNode,
+    children: ReactNode,
+    color?: string,
+    loading?: boolean,
+    backgroundTint?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900,
+    background?: ButtonColor | string
 }
 
 const ButtonBase = styled.button<Pick<ButtonProps, 'color' | 'background'>>`
     color : ${(props) => props.color ?? props.theme.colors?.button?.color ?? "#000"};
-    background : ${(props)=> props.background ?? props.theme.colors?.button?.bgColor ?? "#fff"};
+    ${(props) => props.background};
     ${tw`
        cursor-pointer
        p-2
@@ -26,14 +42,20 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'color' | 'background'>>`
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
 
-    const { content, loading ,background } = props;
+    let { content, loading, background, backgroundTint, children } = props;
+    const bgColor = generateBgColor(background ?? "", backgroundTint ?? 500);
 
-    return <ButtonBase color={props.color} background={background}>
+    return <ButtonBase color={props.color} background={bgColor}>
         {
             loading && <Spinner></Spinner>
         }
-        {content}
+        {content ?? children}
     </ButtonBase>
+}
+
+Button.defaultProps = {
+    background: "White",
+    backgroundTint: 500
 }
 
 export {
