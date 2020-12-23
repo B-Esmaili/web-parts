@@ -29,6 +29,8 @@
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/react": "^6.1.11",
+    "@styled-icons/boxicons-regular": "^10.18.0",
+    "@styled-icons/icomoon": "^10.18.0",
     "@types/react": "^17.0.0",
     "@types/styled-components": "^5.1.5",
     "babel-loader": "^8.2.2",
