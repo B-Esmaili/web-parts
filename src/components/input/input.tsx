@@ -24,6 +24,7 @@ const InputField = styled.input`
          focus:outline-none
          w-full
          mx-2
+         bg-transparent
      `}
 `;
 
