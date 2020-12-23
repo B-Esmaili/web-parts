@@ -1,9 +1,17 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { InputProps } from './types';
 import styled from "styled-components";
 import tw from "twin.macro";
-import {Spinner} from '../spinner';
+import { Spinner } from '../spinner';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const ControlWrap = styled.div`
+  ${tw`
+     flex
+     flex-col
+  `}
+`;
 
 const InputContainer = styled.div<{ loading: boolean }>`
       ${tw`
@@ -31,38 +39,69 @@ const InputField = styled.input`
 const IconWrap = styled.div`
    ${tw`
       flex-auto
-      flex-shrink-0      
+      flex-shrink-0
    `}
 `
 
-const Input: React.FC<InputProps> = (props) => {
+const ValidationMessage = styled(motion.span).attrs({
+    animate: {
+        opacity: 1,
+        y: "0%"
+    },
+    exit: {
+        opacity: 0,
+        y: "-20%"
+    },
+    initial: {
+        opacity: 0,
+        y: "-20%"
+    }
+})`
+   ${tw`
+     p-1 
+   `}
+`
+
+
+
+const Input: React.FC<InputProps> = React.forwardRef((props, ref : React.Ref) => {
 
     const {
         startIcon,
         endIcon,
         loading,
         onChange,
-        placeholder
+        validationMessage,
+        ...rest
     } = props;
 
-
-    return <InputContainer
-        loading
-    >
-        {
-            startIcon && <IconWrap>{startIcon}</IconWrap>
+    return <ControlWrap>
+        <InputContainer
+            loading
+        >
+            {
+                startIcon && <IconWrap>{startIcon}</IconWrap>
+            }
+            <InputField
+                onChange={onChange}
+                ref={ref}
+                {...rest} />
+            {
+                loading && <Spinner />
+            }
+            {
+                (endIcon && !loading) && <IconWrap>{endIcon}</IconWrap>
+            }
+        </InputContainer>
+        <AnimatePresence>{
+            validationMessage && (
+                <ValidationMessage children={validationMessage}
+                />
+            )
         }
-        <InputField 
-            onChange={onChange}
-            placeholder={placeholder}/>
-        {
-            loading && <Spinner/>
-        }
-        {
-            (endIcon && ! loading) && <IconWrap>{endIcon}</IconWrap>
-        }
-    </InputContainer>
-}
+        </AnimatePresence>
+    </ControlWrap>
+});
 
 
 Input.defaultProps = {
