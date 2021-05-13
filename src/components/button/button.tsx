@@ -5,7 +5,7 @@ import Spinner from './spinner'
 import { generateBgColor } from './color-gen'
 
 export enum ButtonColor {
-    black = "black",
+    black = "red",
     white = "white",
     gray = "gray",
     red = "red",
